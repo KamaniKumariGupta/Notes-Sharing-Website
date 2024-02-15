@@ -59,7 +59,7 @@ const Post = ({ note, postUser }) => {
     } catch (err) {}
     setseen(isseen ? seen - 1 : seen + 1);
     setisseen(!isseen);
-    window.open(note.notefilename, "_blank").focus();
+    window.open(`${note.notefilename}`, "_blank", "noreferrer");
   };
   const DeleteNotes = async () => {
     let response = prompt(
@@ -104,7 +104,7 @@ const Post = ({ note, postUser }) => {
             </Link>
             <div className="post-topbar-follow-ago-container">
               <p>{postUser && postUser.followers.length} Followers</p>
-              <p style={{marginLeft:"5px"}}>{format(note.createdAt)}</p>
+              <p style={{ marginLeft: "5px" }}>{format(note.createdAt)}</p>
             </div>
           </div>
 
@@ -112,7 +112,7 @@ const Post = ({ note, postUser }) => {
             <div className="post-topbar-edit-delete-container">
               <Link
                 to={`/note/update/${note._id}`}
-                style={{ textDecoration: "none",color:"black" }}
+                style={{ textDecoration: "none", color: "black" }}
                 className="post-topbar-edit-icon"
               >
                 <Edit />
@@ -138,7 +138,7 @@ const Post = ({ note, postUser }) => {
             </div>
           </div>
           <div className="main-post-about" style={{ lineHeight: "1.4" }}>
-              <p className="main-post-notename">{note.notename}</p>
+            <p className="main-post-notename">{note.notename}</p>
             <p className="main-post-description">Description:</p>
             <p className="main-post-desc">{note.desc}</p>
           </div>
@@ -156,7 +156,7 @@ const Post = ({ note, postUser }) => {
           <Link
             to={`/viewcomment/${note._id}`}
             className="link-in-comment"
-            style={{ textDecoration: "none",color:"black" }}
+            style={{ textDecoration: "none", color: "black" }}
           >
             <div className="post-reaction">
               <Comment />
